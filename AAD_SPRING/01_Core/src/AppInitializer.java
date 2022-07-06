@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class AppInitializer {
     public static void main(String[] args) {
 
-        /*Hooking Process*/
+        /*Shutdown Hook / Hooking Process*/
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
