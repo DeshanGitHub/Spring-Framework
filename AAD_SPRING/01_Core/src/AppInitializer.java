@@ -7,17 +7,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class AppInitializer {
     public static void main(String[] args) {
 
+        /*Apita Spring wala siyaluma weda karala dena container eka creat*/
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+
         /*Shutdown Hook / Hooking Process*/
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("JVM is about to Shut Down");
+
+                /*Close the ctx using hooking process*/
+                ctx.close();
+
             }
         }));
-
-
-        /*Apita Spring wala siyaluma weda karala dena container eka creat*/
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 
         /*App config class eken object ekak create kirima*/
         ctx.register(AppConfig.class);
@@ -31,8 +34,6 @@ public class AppInitializer {
 
         SpringBeanThree beanThree = ctx.getBean(SpringBeanThree.class);
         System.out.println(beanThree);
-
-        ctx.close();
 
     }
 }
