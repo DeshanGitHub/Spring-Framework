@@ -9,9 +9,4 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "bean")
 public class AppConfig {
 
-    @Bean
-//    @Scope("prototype")
-    public MyConnection myConnection(){
-        return new MyConnection();
-    }
 }

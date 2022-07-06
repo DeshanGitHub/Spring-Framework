@@ -9,8 +9,8 @@ public class AppInitializer {
         ctx.refresh();
         ctx.registerShutdownHook();
 
-        MyConnection bean1 = ctx.getBean(MyConnection.class);
-        MyConnection bean2 = ctx.getBean(MyConnection.class);
+//        MyConnection bean1 = ctx.getBean(MyConnection.class);
+//        MyConnection bean2 = ctx.getBean(MyConnection.class);
 
     }
 }
