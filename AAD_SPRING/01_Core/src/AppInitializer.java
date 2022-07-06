@@ -38,12 +38,29 @@ public class AppInitializer {
 //        System.out.println(beanOneIdType);
 
         /*create myConnection object*/
-        MyConnection bean = ctx.getBean(MyConnection.class);
-        System.out.println(bean);
+//        MyConnection bean = ctx.getBean(MyConnection.class);
+//        System.out.println(bean);
 
         // we can change default id @Bean("connection")
-        MyConnection myConnection = (MyConnection) ctx.getBean("connection");
-        System.out.println(myConnection);
+//        MyConnection myConnection = (MyConnection) ctx.getBean("connection");
+//        System.out.println(myConnection);
+
+        SpringBean ref1 = ctx.getBean(SpringBean.class);
+        SpringBean ref2 = ctx.getBean(SpringBean.class);
+        SpringBean ref3 = ctx.getBean(SpringBean.class);
+        System.out.println(ref1);
+        System.out.println(ref2);
+        System.out.println(ref3);
+
+        SpringBeanTwo b2ref1 = ctx.getBean(SpringBeanTwo.class);
+        SpringBeanTwo b2ref2 = ctx.getBean(SpringBeanTwo.class);
+        System.out.println(b2ref1);
+        System.out.println(b2ref2);
+
+        MyConnection con1 = ctx.getBean(MyConnection.class);
+        MyConnection con2 = ctx.getBean(MyConnection.class);
+        System.out.println(con1);
+        System.out.println(con2);
 
     }
 }
