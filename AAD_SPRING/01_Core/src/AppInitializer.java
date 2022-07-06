@@ -32,12 +32,8 @@ public class AppInitializer {
 
         ctx.refresh();
 
-        /*Get bean from bean class type*/
-        SpringBean beanOneClassType = ctx.getBean(SpringBean.class);
-        System.out.println(beanOneClassType);
-
         /*Get bean using bean id type*/
-        Object beanOneIdType = ctx.getBean("springBean");
+        Object beanOneIdType = ctx.getBean("BeanOne");
         System.out.println(beanOneIdType);
 
     }
