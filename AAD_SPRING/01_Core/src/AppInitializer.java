@@ -41,5 +41,9 @@ public class AppInitializer {
         MyConnection bean = ctx.getBean(MyConnection.class);
         System.out.println(bean);
 
+        // we can change default id @Bean("connection")
+        MyConnection myConnection = (MyConnection) ctx.getBean("connection");
+        System.out.println(myConnection);
+
     }
 }
