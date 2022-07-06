@@ -8,7 +8,7 @@ public class MyConnection implements DisposableBean {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         System.out.println("My Connection Destroyed..!!");
     }
 }
