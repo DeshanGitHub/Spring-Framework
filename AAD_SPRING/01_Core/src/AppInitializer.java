@@ -11,16 +11,21 @@ public class AppInitializer {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 
         /*Shutdown Hook / Hooking Process*/
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("JVM is about to Shut Down");
+//        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("JVM is about to Shut Down");
+//
+//                /*Close the ctx using hooking process*/
+//                ctx.close();
+//
+//            }
+//        }));
 
-                /*Close the ctx using hooking process*/
-                ctx.close();
+        /*short shut down hooking method from spring*/
+        ctx.registerShutdownHook();
 
-            }
-        }));
+        /*Uda kramen shutdown karana eka diga wedi handa, apita spring la short method ekak*/
 
         /*App config class eken object ekak create kirima*/
         ctx.register(AppConfig.class);
