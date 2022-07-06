@@ -12,14 +12,14 @@ public class AppInitializer {
         ctx.register(AppConfig.class);
 
         ctx.refresh();
-
-        /*spring bean class eke tiyena ewa object ekak hadala methanata ganna puluwanda kiyala balana eka*/
-        SpringBean bean = ctx.getBean(SpringBean.class);
-
-        /*Api hadapu bean eken method ekak cl karala belima*/
-        bean.testBean();
-
-        System.out.println(bean);
+//
+//        /*spring bean class eke tiyena ewa object ekak hadala methanata ganna puluwanda kiyala balana eka*/
+//        SpringBean bean = ctx.getBean(SpringBean.class);
+//
+//        /*Api hadapu bean eken method ekak cl karala belima*/
+//        bean.testBean();
+//
+//        System.out.println(bean);
 
         ctx.close();
 
