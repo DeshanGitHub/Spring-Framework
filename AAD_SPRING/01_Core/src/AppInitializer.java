@@ -1,3 +1,4 @@
+import bean.MyConnection;
 import bean.SpringBean;
 import bean.SpringBeanThree;
 import bean.SpringBeanTwo;
@@ -33,8 +34,12 @@ public class AppInitializer {
         ctx.refresh();
 
         /*Get bean using bean id type*/
-        Object beanOneIdType = ctx.getBean("BeanOne");
-        System.out.println(beanOneIdType);
+//        Object beanOneIdType = ctx.getBean("BeanOne");
+//        System.out.println(beanOneIdType);
+
+        /*create myConnection object*/
+        MyConnection bean = ctx.getBean(MyConnection.class);
+        System.out.println(bean);
 
     }
 }
