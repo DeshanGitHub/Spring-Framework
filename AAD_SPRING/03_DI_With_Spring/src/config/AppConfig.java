@@ -11,13 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public SpringBeanOne getBeanOne() {
-        //Inter bean dependency
-        SpringBeanTwo bean = getBeanTwo();
-        SpringBeanTwo beanTwo = getBeanTwo();
-
+    public SpringBeanOne getBeanOne(SpringBeanTwo two) {
+        //Inter bean dependency (invoke bean method inside another bean method is called as inter-bean dependency)
+        System.out.println(two);
         return new SpringBeanOne();
     }
+
 
     @Bean
     public SpringBeanTwo getBeanTwo() {
