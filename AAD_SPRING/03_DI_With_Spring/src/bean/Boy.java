@@ -14,7 +14,7 @@ public class Boy implements BeanNameAware, BeanFactoryAware, ApplicationContextA
 //    @Autowired
 //    Girl girl; // property injection
 
-    @Qualifier("girlTwo")
+    @Qualifier("girlOne")
     @Autowired
     GoodGirl girl;
 
