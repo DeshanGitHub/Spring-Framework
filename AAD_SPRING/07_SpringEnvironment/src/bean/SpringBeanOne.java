@@ -15,6 +15,10 @@ public class SpringBeanOne implements InitializingBean {
     @Value("${user.name}")
     private String userName;
 
+    /*Get processor level from system environment variable*/
+    @Value("${PROCESSOR_LEVEL}")
+    private String logName;
+
     public SpringBeanOne() {
         System.out.println("Spring Bean One Instantiated");
     }
@@ -26,6 +30,9 @@ public class SpringBeanOne implements InitializingBean {
 
         /*print user name*/
         System.out.println(userName);
+
+        /*print log name*/
+        System.out.println(logName);
 
     }
 }
