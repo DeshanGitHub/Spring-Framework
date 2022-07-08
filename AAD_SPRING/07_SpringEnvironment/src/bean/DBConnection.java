@@ -28,11 +28,19 @@ public class DBConnection implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(environment);
-        String logname = environment.getProperty("os.name");
+        String logname = environment.getProperty("myName");// issue key = null
+
+        String requiredProperty = environment.getRequiredProperty("user.namee"); // if key is wrong = Exception
+
+
         System.out.println(logname);
+        System.out.println(requiredProperty);
+
 
         System.out.println(url);
         System.out.println(userName);
+
+
         System.out.println(password);
         System.out.println(driverClassName);
     }
