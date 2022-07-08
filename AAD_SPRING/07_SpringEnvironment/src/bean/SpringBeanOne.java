@@ -19,6 +19,14 @@ public class SpringBeanOne implements InitializingBean {
     @Value("${PROCESSOR_LEVEL}")
     private String logName;
 
+    /*Get properties from Resource Bundles*/
+    @Value("${ijse.application.name}")
+    private String applicationName;
+
+    /*Get properties from second Resource Bundle*/
+    @Value("${myName}")
+    private String myName;
+
     public SpringBeanOne() {
         System.out.println("Spring Bean One Instantiated");
     }
@@ -33,6 +41,12 @@ public class SpringBeanOne implements InitializingBean {
 
         /*print log name*/
         System.out.println(logName);
+
+        /*print application name*/
+        System.out.println(applicationName);
+
+        /*print myName*/
+        System.out.println(myName);
 
     }
 }
