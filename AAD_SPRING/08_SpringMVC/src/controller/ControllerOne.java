@@ -1,25 +1,19 @@
 package controller;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("controllerone")
-public class ControllerOne implements InitializingBean {
-
-    public ControllerOne() {
-        System.out.println("Controller One Instantiated");
-    }
+@Controller
+@RequestMapping("home")
+public class ControllerOne {
 
     @GetMapping
-    public void testMethod() {
+    public String testMethod() {
         System.out.println("Request Received");
+        return "index";
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("Controller One Is ready To Use");
-    }
 }
