@@ -18,7 +18,7 @@ public class CustomerController {
     }
 
     @GetMapping(path = "newid") //handler mapping
-    public String generateNewID(){ // handler methods
+    public String generateNewID() { // handler methods
         return "New Customers ID Invoked and Get Method Invoked";
     }
 
