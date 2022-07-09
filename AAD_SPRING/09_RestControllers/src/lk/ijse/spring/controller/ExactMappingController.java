@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("item")
+@RequestMapping("exact")
 public class ExactMappingController {
 
     //Exact Mapping = .../item/it/test1
