@@ -8,5 +8,15 @@
     <artifactId>10_SpringWithMaven</artifactId>
     <version>1.0.0</version>
 
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
