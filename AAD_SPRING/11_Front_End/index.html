@@ -20,21 +20,20 @@
             <form id="customerForm">
                 <div class="mb-3">
                     <label class="form-label" for="cusID">Customer ID</label>
-                    <input class="form-control" id="cusID" name="customerID" placeholder="Customer ID" type="text">
-                </div>
+                    <input class="form-control" id="cusID" name="id" placeholder="Customer ID" type="text"></div>
                 <div class="mb-3">
                     <label class="form-label" for="cusName">Customer Name</label>
-                    <input class="form-control" id="cusName" name="customerName" placeholder="Customer Name"
+                    <input class="form-control" id="cusName" name="name" placeholder="Customer Name"
                            type="text">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="cusAddress">Customer Address</label>
-                    <input class="form-control" id="cusAddress" name="customerAddress" placeholder="Customer Address"
+                    <input class="form-control" id="cusAddress" name="address" placeholder="Customer Address"
                            type="text">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="cusSalary">Customer Salary</label>
-                    <input class="form-control" id="cusSalary" name="customerSalary" placeholder="Customer Salary"
+                    <input class="form-control" id="cusSalary" name="salary" placeholder="Customer Salary"
                            type="text">
                 </div>
                 <div class="mb-3">
@@ -84,16 +83,17 @@
     $("#btnSaveCustomer").click(function () {
         var data = $("#customerForm").serialize(); // return query string of form with name:type-value
         $.ajax({
-            url: "http://localhost:8080/filter/customer",
+            url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
             method: "POST",
             data: data,// if we send data with the request
             success: function (res) {
-                if (res.status == 200) {
-                    alert(res.message);
-                    loadAllCustomers();
-                } else {
-                    alert(res.data);
-                }
+                console.log(res);
+                // if (res.status == 200) {
+                //     alert(res.message);
+                //     loadAllCustomers();
+                // } else {
+                //     alert(res.data);
+                // }
 
             },
             error: function (ob, textStatus, error) {
@@ -113,19 +113,20 @@
 
         // initiate the request
         $.ajax({
-            url: "http://localhost:8080/filter/customer?CusID=" + customerID,// viya query string
+            url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer?id=" + customerID,// viya query string
             method: "DELETE",
             //data:data,// application/x-www-form-urlencoded
             success: function (res) {
+
                 console.log(res);
-                if (res.status == 200) {
-                    alert(res.message);
-                    loadAllCustomers();
-                } else if (res.status == 400) {
-                    alert(res.data);
-                } else {
-                    alert(res.data);
-                }
+                // if (res.status == 200) {
+                //     alert(res.message);
+                //     loadAllCustomers();
+                // } else if (res.status == 400) {
+                //     alert(res.data);
+                // } else {
+                //     alert(res.data);
+                // }
 
             },
             error: function (ob, status, t) {
@@ -148,19 +149,20 @@
         }
 
         $.ajax({
-            url: "http://localhost:8080/filter/customer",
+            url: "http://localhost:8080/10_SpringWithMaven_war_exploded/api/v1/customer",
             method: "PUT",
             contentType: "application/json", //You should state request's content type using MIME types
             data: JSON.stringify(cusOb), // format js object to valid json string
             success: function (res) {
-                if (res.status == 200) { // process is  ok
-                    alert(res.message);
-                    loadAllCustomers();
-                } else if (res.status == 400) { // there is a problem with the client side
-                    alert(res.message);
-                } else {
-                    alert(res.data); // else maybe there is an exception
-                }
+                console.log(res);
+                // if (res.status == 200) { // process is  ok
+                //     alert(res.message);
+                //     loadAllCustomers();
+                // } else if (res.status == 400) { // there is a problem with the client side
+                //     alert(res.message);
+                // } else {
+                //     alert(res.data); // else maybe there is an exception
+                // }
             },
             error: function (ob, errorStus) {
                 console.log(ob); // other errors
