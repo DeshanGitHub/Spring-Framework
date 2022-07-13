@@ -14,8 +14,8 @@ import javax.persistence.Id;
 @Entity
 public class Customer {
     @Id
-    private String code;
-    private String description;
-    private int qtyOnHand;
-    private double unitPrice;
+    private String id;
+    private String name;
+    private String address;
+    private double salary;
 }
