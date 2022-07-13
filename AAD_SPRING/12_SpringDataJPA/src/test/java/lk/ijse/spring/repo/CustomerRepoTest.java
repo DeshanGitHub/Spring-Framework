@@ -57,8 +57,12 @@ class CustomerRepoTest {
 
     @Test
     public void updateCustomer() {
-        Customer customer1 = new Customer("C001", "Dasuni", "Panadura", 1000.00);
-        customerRepo.save(customer1);
+        if (customerRepo.existsById("C009")) {
+            Customer customer1 = new Customer("C001", "Dasuni", "Panadura", 1000.00);
+            customerRepo.save(customer1);
+        }else{
+            throw new RuntimeException("No Such Customer To Update");
+        }
     }
 
 }
