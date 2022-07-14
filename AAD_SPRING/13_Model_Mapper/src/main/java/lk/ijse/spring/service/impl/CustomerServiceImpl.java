@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -56,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO searchCustomer(String id) {
         if (repo.existsById(id)) {
-            return mapper.map( repo.findById(id).get(), CustomerDTO.class);
+            return mapper.map(repo.findById(id).get(), CustomerDTO.class);
         } else {
             throw new RuntimeException("No Customer For " + id + " ..!");
         }
@@ -64,6 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        return mapper.map(repo.findAll(),new TypeToken<List<CustomerDTO>>(){}.getType());
+        return mapper.map(repo.findAll(), new TypeToken<List<CustomerDTO>>() {
+        }.getType());
     }
 }
