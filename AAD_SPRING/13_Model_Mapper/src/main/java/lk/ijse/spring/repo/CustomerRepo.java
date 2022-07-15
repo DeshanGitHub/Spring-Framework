@@ -8,4 +8,6 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     Customer findCustomerByName(String name);
 
     Customer findCustomerByAddress(String address);
+
+    Customer findCustomerByNameAndAddress(String name,String address);
 }

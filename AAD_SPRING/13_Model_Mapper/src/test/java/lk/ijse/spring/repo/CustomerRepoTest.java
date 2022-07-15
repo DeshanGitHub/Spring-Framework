@@ -9,25 +9,30 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @WebAppConfiguration // State test configuration class
 @ContextConfiguration(classes = {JPAConfig.class}) // import configurations for Test Context
-@ExtendWith(SpringExtension.class) // Run with Spring Extension
+@ExtendWith(SpringExtension.class)
+        // Run with Spring Extension
 class CustomerRepoTest {
     @Autowired
     CustomerRepo customerRepo; // Inject the dependency of Customer Repo
 
     @Test
-    public void searchCustomerByName(){
-        Customer dasun = customerRepo.findCustomerByName("Aruni");
-        System.out.println(dasun.toString());
+    public void searchCustomerByName() {
+        Customer c1 = customerRepo.findCustomerByName("Kasun");
+        System.out.println(c1.toString());
     }
 
     @Test
-    public void searchCustomerByAddress(){
-        Customer dasun = customerRepo.findCustomerByAddress("Kaluthara");
-        System.out.println(dasun.toString());
+    public void searchCustomerByAddress() {
+        Customer c1 = customerRepo.findCustomerByAddress("Kaluthara");
+        System.out.println(c1.toString());
+    }
+
+    @Test
+    public void searchCustomerByNameAndAddress() {
+        Customer c1 = customerRepo.findCustomerByNameAndAddress("Kasun", "Kaluthara");
+        System.out.println(c1.toString());
     }
 
 }
