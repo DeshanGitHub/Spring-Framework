@@ -11,19 +11,35 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebAppConfig.class})
 @ExtendWith(SpringExtension.class)
-@Transactional// dont commit anything to database // just test is it working properly or not
+@Transactional
+// dont commit anything to database // just test is it working properly or not
 class CustomerServiceImplTest {
     @Autowired
     CustomerService customerService;
 
+    //add One Customer for testing
     public CustomerDTO addOneCustomer() {
         //If it is a new Customer It should added to the database
         return new CustomerDTO("C020", "Ramal", "Galle", 1000.00);
+    }
+
+    //Add multiple customers for testing
+    public void addCustomers() {
+        CustomerDTO c1 = new CustomerDTO("C020", "Dasun", "Galle", 100);
+        CustomerDTO c2 = new CustomerDTO("C021", "Kamal", "Panadura", 200);
+        CustomerDTO c3 = new CustomerDTO("C022", "Ramal", "Kaluthara", 300);
+        CustomerDTO c4 = new CustomerDTO("C023", "Oshan", "Colombo", 400);
+        customerService.saveCustomer(c1);
+        customerService.saveCustomer(c2);
+        customerService.saveCustomer(c3);
+        customerService.saveCustomer(c4);
     }
 
     @Test
@@ -50,10 +66,35 @@ class CustomerServiceImplTest {
 
     @Test
     void deleteCustomer() {
+        //Add multiple customers
+        addCustomers();
+
+        // delete existing customer
+        assertDoesNotThrow(() -> {
+            customerService.deleteCustomer("C020");
+        });
+
+        //delete an non existing customer
+        assertThrows(RuntimeException.class, () -> {
+            customerService.deleteCustomer("C016");
+        });
     }
 
     @Test
     void updateCustomer() {
+        //Add multiple customers
+        addCustomers();
+
+        //update an existing customer
+        assertDoesNotThrow(() -> {
+            customerService.updateCustomer(new CustomerDTO("C020", "Ramal", "Galle", 10000.00));
+        });
+
+        //update an non existing customer
+        //should throw an exception
+        assertThrows(RuntimeException.class, () -> {
+            customerService.updateCustomer(new CustomerDTO("C025", "Ramal", "Galle", 10000.00));
+        });
     }
 
     @Test
@@ -62,10 +103,13 @@ class CustomerServiceImplTest {
         customerService.saveCustomer(customer);
 
         //search an available customer
-        CustomerDTO c001 = customerService.searchCustomer("C001");
+        CustomerDTO c001 = customerService.searchCustomer("C020");
         assertNotNull(c001); // check customer is null or not
 
-
+/*
+        check non existing customer
+        should throw error
+        */
 
 
         assertThrows(RuntimeException.class, () -> {
@@ -75,5 +119,15 @@ class CustomerServiceImplTest {
 
     @Test
     void getAllCustomers() {
+        //add multiple customers
+        addCustomers();
+
+        List<CustomerDTO> allCustomers = customerService.getAllCustomers();
+        for (CustomerDTO allCustomer : allCustomers) {
+            System.out.println(allCustomer.toString());
+        }
+
+        //Test customer availability
+        assertNotNull(allCustomers);
     }
 }
