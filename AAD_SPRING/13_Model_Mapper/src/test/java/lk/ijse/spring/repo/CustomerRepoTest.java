@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -71,66 +72,66 @@ class CustomerRepoTest {
     }
 
     @Test
-    public void testCountBy(){
+    public void testCountBy() {
         long ramal = customerRepo.countByName("Kamal");
         System.out.println(ramal);
     }
 
     @Test
-    public void testExistBy(){
+    public void testExistBy() {
         boolean b = customerRepo.existsByNameAndAddress("Dasun", "Panadura");
         System.out.println(b);
     }
 
     @Test
-    public void textQueryOne(){
+    public void textQueryOne() {
         List<Customer> allCustomers = customerRepo.getAllCustomers();
-        allCustomers.forEach(v->{
+        allCustomers.forEach(v -> {
             System.out.println(v.toString());
         });
     }
 
     @Test
-    public void textQueryTwo(){
+    public void textQueryTwo() {
         List<Customer> allCustomers = customerRepo.getAllCustomersWithJPQL();
-        allCustomers.forEach(v->{
+        allCustomers.forEach(v -> {
             System.out.println(v.toString());
         });
     }
 
     @Test
-    public void textQueryThree(){
+    public void textQueryThree() {
         List<Customer> allCustomers = customerRepo.getAllCustomersWithHQL();
-        allCustomers.forEach(v->{
+        allCustomers.forEach(v -> {
             System.out.println(v.toString());
         });
     }
 
     @Test
-    public void textQueryFour(){
-        Customer customer = customerRepo.searchCustomerFromName("Kasun","Kaluthara");
+    public void textQueryFour() {
+        Customer customer = customerRepo.searchCustomerFromName("Kasun", "Kaluthara");
         System.out.println(customer.toString());
     }
 
     @Test
-    public void textQueryFive(){
-        Customer customer = customerRepo.searchCustomerFromNameWithNamedPara("Sumana","Pimbura");
+    public void textQueryFive() {
+        Customer customer = customerRepo.searchCustomerFromNameWithNamedPara("Sumana", "Pimbura");
         System.out.println(customer.toString());
     }
 
     @Test
-    public void textQuerySix(){
+    public void textQuerySix() {
         Customer customer = customerRepo.getAllCustomersWithJPQLWithParams("C001");
         System.out.println(customer.toString());
     }
 
     @Test
-    public void checkPageableFeatures(){
+    public void checkPageableFeatures() {
         //page - page number, starts with 0
         //size - count of records for a page
-        PageRequest pr = PageRequest.of(0, 4);
+        PageRequest pr = PageRequest.of(0, 4, Sort.by("id").descending());
         Page<Customer> all = customerRepo.findAll(pr);
-        all.forEach(v->{
+        all.forEach(v -> {
             System.out.println(v.toString());
         });
     }
