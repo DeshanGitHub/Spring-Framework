@@ -96,4 +96,12 @@ class CustomerRepoTest {
         });
     }
 
+    @Test
+    public void textQueryThree(){
+        List<Customer> allCustomers = customerRepo.getAllCustomersWithHQL();
+        allCustomers.forEach(v->{
+            System.out.println(v.toString());
+        });
+    }
+
 }

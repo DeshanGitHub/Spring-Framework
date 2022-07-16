@@ -38,7 +38,12 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     @Query(value = "select * from Customer",nativeQuery = true)
     List<Customer> getAllCustomers();
 
-    //JPQL = Java Persistance Query Language
+    //JPQL = Java Persistence Query Language
     @Query(value = "select u from Customer u")
     List<Customer> getAllCustomersWithJPQL();
+
+    //HQL = Hibernate Query Language
+    @Query(value = "from Customer c")
+    List<Customer> getAllCustomersWithHQL();
+
 }
